@@ -11,5 +11,8 @@ namespace trab1
         public abstract void SetMarca(string nome);
         public abstract void SetModelo(string nome);
         public abstract void SetValor(double valor);
+        public abstract string GetMarca();
+        public abstract string GetModelo();
+        public abstract double GetPreco();
     }
 }

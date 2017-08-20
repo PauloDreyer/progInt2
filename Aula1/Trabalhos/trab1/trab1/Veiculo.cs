@@ -26,17 +26,17 @@ namespace trab1
             preco = valor;
         }
 
-        public string GetMarca()
+        public override string GetMarca()
         {
             return marca;
         }
 
-        public string GetModelo()
+        public override string GetModelo()
         {
             return modelo;
         }
 
-        public double GetPreco()
+        public override double GetPreco()
         {
             return preco;
         }
