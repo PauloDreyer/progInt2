@@ -11,7 +11,6 @@ namespace trab1
 
         void Home();
         void NextPage(int opcao);
-        void PrevPage();
    
     }
 }

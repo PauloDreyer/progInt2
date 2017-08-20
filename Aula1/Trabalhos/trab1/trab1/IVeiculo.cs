@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace trab1
 {
-    public abstract class Menu : IMenu
+    interface IVeiculo
     {
-        public abstract void Home();
-        public abstract void NextPage(int opcao);
+        void SetMarca(string nome);
+        void SetModelo(string nome);
+        void SetValor(double valor);
     }
 }

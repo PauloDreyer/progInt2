@@ -37,6 +37,10 @@ namespace trab1
             {
                 menu.NextPage(4);
             }
+            else if (opcao == ConsoleKey.D5)
+            {
+                menu.NextPage(5);
+            }
             else if (opcao == ConsoleKey.D0)
             {
                 MenuHome();

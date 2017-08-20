@@ -5,50 +5,120 @@ namespace trab1
 {
     public class MenuPrincipal : Menu
     {
-        static String nome;
         static ConsoleKeyInfo opcao;
-        static List<String> listPes = new List<String>();
-
+        string modelo;
+        int flag = 0;
+        static List<Veiculo> listVei = new List<Veiculo>();
+    
         public void Limpar()
         {
             Console.Clear();
         }
-
-        private void Consultar()
+        private void Incluir()
         {
-            Console.WriteLine("Informe o Nome para Consulta!");
-            nome = listPes.Find(x => x.Contains(Console.ReadLine()));
-            if (nome.Length > 0)
+            Veiculo veiculo = new Veiculo();
+            Console.WriteLine("Cadastro!");
+            Console.WriteLine("Marca: ");
+            veiculo.SetMarca(Console.ReadLine());
+            Console.WriteLine("Modelo: ");
+            veiculo.SetModelo(Console.ReadLine());
+            Console.WriteLine("Preço: ");
+            veiculo.SetValor(Convert.ToDouble(Console.ReadLine()));
+            listVei.Add(veiculo);
+
+        }
+
+        private void Alterar()
+        {
+            Console.WriteLine("Informe o Modelo para Consulta!");
+            modelo = Console.ReadLine();
+            flag = 0;
+            foreach (Veiculo veic in listVei)
             {
-                Console.WriteLine(nome);
+                 if (veic.GetModelo() == modelo)
+                {
+                    flag = 1;
+                    Console.WriteLine("Marca: " + veic.GetMarca());
+                    Console.WriteLine("Nova Marca");
+                    veic.SetMarca(Console.ReadLine());
+                    Console.WriteLine("Modelo: " + veic.GetModelo());
+                    Console.WriteLine("Novo Modelo");
+                    veic.SetModelo(Console.ReadLine());
+                    Console.WriteLine("Preço: " + veic.GetPreco());
+                    Console.WriteLine("Novo Preço");
+                    veic.SetValor(Convert.ToDouble(Console.ReadLine()));
+                }
+            }
+            if (flag == 0)
+            {
+                Console.WriteLine("Modelo não encontrado!");
+            }
+
+            Console.WriteLine("Voltar para o Menu <ENTER>!");
+            opcao = Console.ReadKey();
+
+        }
+       
+        private void Excluir()
+        {
+            Console.WriteLine("Informe o Modelo para Excluir!");
+            modelo = Console.ReadLine();
+            flag = 0;
+            foreach (Veiculo veic in listVei)
+            {
+                if (veic.GetModelo() == modelo)
+                {
+                    flag = 1;       
+                }
+            }
+            
+            if (flag == 1)
+            {
+                listVei.RemoveAll(x => x.GetModelo() == modelo);
+                Console.WriteLine("Veículo Excluído!");
             }
             else
             {
-                Console.WriteLine("Nome não encontrado!");
+                Console.WriteLine("Modelo não encontrado!");
             }
-            
+
+            Console.WriteLine("Voltar para o Menu <ENTER>!");
+            opcao = Console.ReadKey();
+        }
+   
+        private void Consultar()
+        {
+            Console.WriteLine("Informe o Modelo para Consulta!");
+            modelo = Console.ReadLine();
+            flag = 0;
+            foreach (Veiculo veic in listVei)
+            {
+                if (veic.GetModelo() == modelo)
+                {
+                    flag = 1;
+                    Console.WriteLine("Marca: " + veic.GetMarca());
+                    Console.WriteLine("Modelo: " + veic.GetModelo());
+                    Console.WriteLine("Preço: " + veic.GetPreco());
+                }
+            }
+            if (flag == 0)
+            {
+                Console.WriteLine("Modelo não encontrado!");
+            }
+
             Console.WriteLine("Voltar para o Menu <ENTER>!");
             opcao = Console.ReadKey();
         }
 
-        private void Incluir()
-        {
-            Console.WriteLine("Informe o Nome para Incluir!");
-            listPes.Add(Console.ReadLine());
-
-        }
-
-        private void Excluir()
-        {
-            Console.WriteLine("Informe o Nome para Excluir!");
-            listPes.Remove(Console.ReadLine());
-        }
-
         private void ListarTodos()
         {
-            for (int i = 0; i < listPes.Count; i++)
+
+            foreach (Veiculo veic in listVei)
             {
-                Console.WriteLine("Nome: "+listPes[i]);
+                Console.WriteLine("Marca: "+veic.GetMarca());
+                Console.WriteLine("Modelo: " + veic.GetModelo());
+                Console.WriteLine("Preço: " + veic.GetPreco());
+                Console.WriteLine(" ");
             }
             Console.WriteLine("Voltar para o Menu <ENTER>!");
             opcao = Console.ReadKey();
@@ -58,23 +128,24 @@ namespace trab1
         {
             Console.WriteLine(" --------------------");
             Console.WriteLine("| 0 - Home           |");
-            Console.WriteLine("| 1 - Consultar      |");
-            Console.WriteLine("| 2 - Incluir        |");
+            Console.WriteLine("| 1 - Incluir        |");
+            Console.WriteLine("| 2 - Alterar        |");
             Console.WriteLine("| 3 - Excluir        |");
-            Console.WriteLine("| 4 - Listar Todos   |");
+            Console.WriteLine("| 4 - Consultar      |");
+            Console.WriteLine("| 5 - Listar Todos   |");
             Console.WriteLine(" --------------------");
         }
-
+ 
         public override void NextPage(int opcao)
         {
             Limpar();
             if (opcao == 1)
             {
-                Consultar();
+                Incluir();
             }
             else if (opcao == 2)
             {
-                Incluir();
+                Alterar();
             }
             else if (opcao == 3)
             {
@@ -82,15 +153,12 @@ namespace trab1
             }
             else if (opcao == 4)
             {
+                Consultar();
+            }
+            else if (opcao == 5)
+            {
                 ListarTodos();
             }
         }
-
-        public override void PrevPage()
-        {
-            throw new NotImplementedException();
-        }
-
-        
     }
 }
