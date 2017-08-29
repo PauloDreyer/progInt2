@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AppCalc"
+             x:Class="AppCalc.MainPage"
+             BackgroundColor="Black">
+
+    <ContentPage.Content>
+            <StackLayout VerticalOptions="Center">
+                <Entry PlaceholderColor="Blue" FontSize="Large" FontFamily="Verdana" Placeholder="Conta" BackgroundColor="White" IsEnabled="False" Text="{Binding Visor}" HorizontalTextAlignment="End" />
+                <Button  FontSize="Large" FontFamily="Verdana" Text="Clear" Command="{Binding LimpaTudoCommand}" HorizontalOptions="CenterAndExpand"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Button x:Name="d1" FontSize="Large" FontFamily="Verdana" Text="1" HorizontalOptions="FillAndExpand" Command="{Binding InsereNumeroCommand}" CommandParameter="{Binding Source={x:Reference d1}, Path=Text}"/>
+                        <Button x:Name="d2" FontSize="Large" FontFamily="Verdana" Text="2" HorizontalOptions="FillAndExpand" Command="{Binding InsereNumeroCommand}" CommandParameter="{Binding Source={x:Reference d2}, Path=Text}"/>
+                        <Button x:Name="d3" FontSize="Large" FontFamily="Verdana" Text="3" HorizontalOptions="FillAndExpand" Command="{Binding InsereNumeroCommand}" CommandParameter="{Binding Source={x:Reference d3}, Path=Text}"/>
+                        <Button x:Name="oSoma" FontSize="Large" FontFamily="Verdana" Text="+" HorizontalOptions="EndAndExpand" Command="{Binding InsereOperacaoCommand}" CommandParameter="{Binding Source={x:Reference oSoma}, Path=Text}" TextColor="Orange"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                        <Button x:Name="d4" FontSize="Large" FontFamily="Verdana" Text="4" HorizontalOptions="FillAndExpand" Command="{Binding InsereNumeroCommand}" CommandParameter="{Binding Source={x:Reference d4}, Path=Text}"/>
+                        <Button x:Name="d5" FontSize="Large" FontFamily="Verdana" Text="5" HorizontalOptions="FillAndExpand" Command="{Binding InsereNumeroCommand}" CommandParameter="{Binding Source={x:Reference d5}, Path=Text}"/>
+                        <Button x:Name="d6" FontSize="Large" FontFamily="Verdana" Text="6" HorizontalOptions="FillAndExpand" Command="{Binding InsereNumeroCommand}" CommandParameter="{Binding Source={x:Reference d6}, Path=Text}"/>
+                        <Button x:Name="oSubtracao" FontSize="Large" FontFamily="Verdana" Text="-" HorizontalOptions="EndAndExpand" Command="{Binding InsereOperacaoCommand}" CommandParameter="{Binding Source={x:Reference oSubtracao}, Path=Text}" TextColor="Orange"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                        <Button x:Name="d7" FontSize="Large" FontFamily="Verdana" Text="7" HorizontalOptions="FillAndExpand" Command="{Binding InsereNumeroCommand}" CommandParameter="{Binding Source={x:Reference d7}, Path=Text}"/>
+                        <Button x:Name="d8" FontSize="Large" FontFamily="Verdana" Text="8" HorizontalOptions="FillAndExpand" Command="{Binding InsereNumeroCommand}" CommandParameter="{Binding Source={x:Reference d8}, Path=Text}"/>
+                        <Button x:Name="d9" FontSize="Large" FontFamily="Verdana" Text="9" HorizontalOptions="FillAndExpand" Command="{Binding InsereNumeroCommand}" CommandParameter="{Binding Source={x:Reference d9}, Path=Text}"/>
+                        <Button x:Name="oMultiplicacao" FontSize="Large" FontFamily="Verdana" Text="*" HorizontalOptions="FillAndExpand" Command="{Binding InsereOperacaoCommand}" CommandParameter="{Binding Source={x:Reference oMultiplicacao}, Path=Text}" TextColor="Orange"/>
+                </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                        <Button x:Name="d0" FontSize="Large" FontFamily="Verdana" Text="0" HorizontalOptions="FillAndExpand" Command="{Binding InsereNumeroCommand}" CommandParameter="{Binding Source={x:Reference d0}, Path=Text}"/>
+                        <Button FontSize="Large" FontFamily="Verdana" Text="=" HorizontalOptions="FillAndExpand" Command="{Binding RealizaOperacaoCommand}"/>
+                        <Button x:Name="oDivisao" FontSize="Large" FontFamily="Verdana" Text="/" HorizontalOptions="End" Command="{Binding InsereOperacaoCommand}" CommandParameter="{Binding Source={x:Reference oDivisao}, Path=Text}" TextColor="Orange"/>
+            </StackLayout>
+        </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
